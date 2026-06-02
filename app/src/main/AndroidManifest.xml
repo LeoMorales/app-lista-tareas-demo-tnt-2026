@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+        Permite que la app se conecte a internet. Lo necesitamos tanto para
+        consumir la API con Retrofit como para descargar los mapas de OSM.
+    -->
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--
+        Sirve para chequear el estado de la conexión. Así, antes de hacer una petición,
+        podemos verificar si hay internet para evitar errores y optimizar el consumo de batería.
+    -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--
+        Acceso a la ubicación exacta por GPS. Es clave para ubicar al usuario
+        en el mapa con la mayor exactitud posible.
+    -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--
+        Acceso a la ubicación aproximada. Funciona como respaldo si el GPS no tiene señal
+        (por ejemplo, en interiores) o si el usuario prefiere no dar el permiso de ubicación precisa.
+    -->
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DemoListaTareas">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DemoListaTareas">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
