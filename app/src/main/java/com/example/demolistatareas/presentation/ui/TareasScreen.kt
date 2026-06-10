@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -29,6 +30,7 @@ import com.example.demolistatareas.presentation.ui.components.ItemTarea
  *
  * @param modifier Permite al componente contenedor ajustar el layout de esta pantalla.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TareasScreen(
     uiState: TareasUiState,
@@ -40,6 +42,7 @@ fun TareasScreen(
     onAbrirMapa: () -> Unit,
     modifier: Modifier = Modifier,
     onVerMapaGlobal: () -> Unit,
+    onOpenDrawer: () -> Unit
 ) {
     var textoInput by rememberSaveable { mutableStateOf("") }
 
@@ -51,6 +54,16 @@ fun TareasScreen(
     // El Scaffold asume la raíz visual. Se le delega el modificador principal.
     Scaffold(
         modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text("Mis Tareas Locales") },
+                navigationIcon = {
+                    IconButton(onClick = onOpenDrawer) {
+                        Icon(Icons.Default.Menu, contentDescription = "Abrir menú")
+                    }
+                }
+            )
+        },
         floatingActionButton = {
             Column(
                 // Alineamos a la derecha para que los centros de los botones coincidan

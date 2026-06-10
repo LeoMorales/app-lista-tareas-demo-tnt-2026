@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -72,4 +73,23 @@ dependencies {
     implementation(libs.osmdroid.android)
 
     implementation(libs.play.services.location)
+
+    // Integración de la plataforma BoM para estandarizar versiones
+    implementation(platform(libs.firebase.bom))
+
+    // Integración de los módulos específicos.
+    // Las versiones son inyectadas automáticamente por la plataforma BoM.
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+
+    // Asegurar esta dependencia en app/build.gradle.kts para utilizar .await()
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+
+    // Librería nativa para interactuar con Google Sign-In y obtener tokens de identidad
+    implementation(libs.play.services.auth)
+
+    // Credential Manager
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
 }

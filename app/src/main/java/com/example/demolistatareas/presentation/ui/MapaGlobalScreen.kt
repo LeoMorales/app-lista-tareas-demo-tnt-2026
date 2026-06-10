@@ -3,6 +3,7 @@ package com.example.demolistatareas.presentation.ui
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -19,7 +20,8 @@ enum class FiltroMapa { TODAS, COMPLETADAS, PENDIENTES }
 @Composable
 fun MapaGlobalScreen(
     tareas: List<Tarea>,
-    onVolver: () -> Unit
+    onVolver: () -> Unit,
+    onOpenDrawer: () -> Unit
 ) {
     var filtroActual by remember { mutableStateOf(FiltroMapa.TODAS) }
 
@@ -39,6 +41,11 @@ fun MapaGlobalScreen(
             TopAppBar(
                 title = { Text("Mapa de Tareas") },
                 navigationIcon = {
+                    IconButton(onClick = onOpenDrawer) {
+                        Icon(Icons.Default.Menu, contentDescription = "Abrir menú")
+                    }
+                },
+                actions = {
                     IconButton(onClick = onVolver) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver")
                     }
