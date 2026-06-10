@@ -16,6 +16,11 @@ retrofit = "2.11.0"
 converterGson = "2.11.0"
 osmdroid = "6.1.18"
 playServicesLocation = "21.2.0"
+googleServices = "4.4.1"
+firebaseBom = "32.8.0"
+playServicesAuth = "21.2.0"
+androidxCredentials = "1.6.0"
+googleid = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,9 +48,18 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converterGson" }
 osmdroid-android = { group = "org.osmdroid", name = "osmdroid-android", version.ref = "osmdroid" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+# Definición del BoM (Bill of Materials) y los módulos requeridos
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "androidxCredentials" }
+androidx-credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "androidxCredentials" }
+googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-
+# Plugin requerido para procesar el archivo google-services.json
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
